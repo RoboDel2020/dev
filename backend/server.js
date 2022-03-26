@@ -19,27 +19,35 @@ app.use(express.urlencoded({ extended: true }));
 const db = require("./app/models");
 const Role = db.role;
 
-db.sequelize.sync();
+const PORT = process.env.PORT || 8080;
+
 // force: true will drop the table if it already exists
-// db.sequelize.sync({force: true}).then(() => {
-//   console.log('Drop and Resync Database with { force: true }');
-//   initial();
-// });
+// set port, listen for requests
+db.sequelize.sync().then(() => {
+  console.log('Drop and Resync Database with { force: true }');
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
+  });
+  // initial();
+});
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to RoboDel application." });
 });
 
 // routes
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
+const restaurantRouter = require('./app/routes/Restaurant');
+app.use("/restaurant", restaurantRouter);
+const customerRouter = require('./app/routes/Customer');
+app.use("/customer", customerRouter);
+const orderRouter = require('./app/routes/Order');
+app.use("/order", orderRouter);
+const robotRouter = require('./app/routes/Robot');
+app.use("/robot", robotRouter);
 
-// set port, listen for requests
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
 
 function initial() {
   Role.create({
