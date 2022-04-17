@@ -5,13 +5,13 @@ const {Customer} = require("../models");
 
 router.get("/", async(req, res)=>{
     const listOfCustomers = await Customer.findAll();
-    res.json(listOfCustomers);
+    res.send(listOfCustomers);
 });
 
 router.get("/:customerId", async (req, res) => {
     const customerId = req.params.customerId;
     const customer = await Customer.findAll({ where: { CustomerID: customerId } });
-    res.json(customer);
+    res.send(customer);
 });
 
 
@@ -19,13 +19,13 @@ router.get("/:customerId", async (req, res) => {
 router.put("/:customerId", async (req, res) => {
     const customerId = req.params.customerId;
     const updatecustomer = await Customer.update(req.body , { where: { CustomerID: customerId } });
-    res.json(updatecustomer);
+    res.send(updatecustomer);
 });
 
 //delete
 router.delete("/:customerId", async (req, res) => {
     const customerId = req.params.customerId;
-    await Customer.destroy({ where: { CustomerID: Customer } }).then(num => {
+    await Customer.destroy({ where: { CustomerID: customerId } }).then(num => {
         if (num == 1) {
           res.send({
             message: "record was deleted successfully!"
@@ -60,7 +60,7 @@ router.delete("/", async (req, res) => {
 router.post("/", async(req, res)=>{
     const customer = req.body;
     await Customer.create(customer);
-    res.json(customer);
+    res.send(customer);
 
 })
 
