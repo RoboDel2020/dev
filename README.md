@@ -7,6 +7,6 @@
 
     and run the code. a new database RoboDel should be created.
 5. In terminal go to the cloned repository, there are 2 folders. Go to "backend' folder and run 'npm install'
-6. run 'npm start'
+6. run 'node server.js'
 7. with another terminal go to frontend folder and run 'npm install'
 8. run 'npm start'
