@@ -1,5 +1,4 @@
 const config = require("../config/db.config.js");
-
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(
   config.DB,
@@ -26,10 +25,12 @@ db.sequelize = sequelize;
 
 db.user = require("../models/user.model.js")(sequelize, Sequelize);
 db.role = require("../models/role.model.js")(sequelize, Sequelize);
-db.Restaurant = require("../models/Restaurant")(sequelize, Sequelize);
 db.Customer = require("../models/Customer")(sequelize, Sequelize);
 db.Order = require("../models/Order")(sequelize, Sequelize);
 db.Robot = require("../models/Robot")(sequelize, Sequelize);
+db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
+db.restaurants = require("./restaurant.model.js")(sequelize, Sequelize);
+
 
 db.role.belongsToMany(db.user, {
   through: "user_roles",
@@ -45,3 +46,4 @@ db.user.belongsToMany(db.role, {
 db.ROLES = ["user", "admin", "moderator"];
 
 module.exports = db;
+
