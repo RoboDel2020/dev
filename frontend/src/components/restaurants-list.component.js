@@ -94,12 +94,13 @@ export default class RestaurantsList extends Component {
               >
                 Search
               </button>
-              
               <div class="space"></div>
               
-              <button className="btn btn-success" onClick={this.newTutorial}> Add Restaurant
-              </button>
-              
+              <Link to={"/addrestaurant"}>
+                <button type="button" className="btn btn-success">
+                Add Restaurant
+                </button>
+            </Link>
             </div> 
           </div>
           
