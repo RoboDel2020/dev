@@ -39,8 +39,8 @@ app.get("/", (req, res) => {
 // routes
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
-const restaurantRouter = require('./app/routes/Restaurant');
-app.use("/restaurant", restaurantRouter);
+require("./app/routes/turorial.routes")(app);
+require("./app/routes/restaurant.routes")(app);
 const customerRouter = require('./app/routes/Customer');
 app.use("/customer", customerRouter);
 const orderRouter = require('./app/routes/Order');

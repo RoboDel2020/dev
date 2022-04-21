@@ -5,7 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import AuthService from "./services/auth.service";
-
+import AddRestaurant from "./components/add-restaurant.component";
+import Restaurant from "./components/restaurant.component";
+import RestaurantsList from "./components/restaurants-list.component";
+import AddTutorial from "./components/add-tutorial.component";
+import Tutorial from "./components/tutorial.component";
+import TutorialsList from "./components/tutorials-list.component";
 import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
@@ -74,6 +79,21 @@ class App extends Component {
               </Link>
             </li>
             <li className="nav-item">
+              <Link to={"/restaurants"} className="nav-link">
+                Restaurants
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/tutorials"} className="nav-link">
+                Tutorials
+              </Link>
+            </li>
+            {/* <li className="nav-item">
+              <Link to={"/add"} className="nav-link">
+                Add
+              </Link>
+            </li> */}
+            <li className="nav-item">
               <Link to={"/customer"} className="nav-link">
                 Customer
               </Link>
@@ -137,6 +157,13 @@ class App extends Component {
         <div className="container mt-3">
           <Switch>
             <Route exact path={["/", "/home"]} component={Home} />
+            <Route exact path={["/restaurants"]} component={RestaurantsList} />
+            <Route exact path="/addrestaurant" component={AddRestaurant} />
+            <Route path="/restaurants/:id" component={Restaurant} />
+
+            <Route exact path={["/tutorials"]} component={TutorialsList} />
+            {/* <Route exact path="/add" component={AddTutorial} /> */}
+            <Route path="/tutorials/:id" component={Tutorial} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
