@@ -7,6 +7,9 @@ import "./App.css";
 import AuthService from "./services/auth.service";
 import AddRestaurant from "./components/add-restaurant.component";
 import Restaurant from "./components/restaurant.component";
+import OrdersList from "./components/orders-list.component";
+import AddOrder from "./components/add-order.component";
+import Order from "./components/order.component";
 import RestaurantsList from "./components/restaurants-list.component";
 import AddTutorial from "./components/add-tutorial.component";
 import Tutorial from "./components/tutorial.component";
@@ -81,6 +84,11 @@ class App extends Component {
             <li className="nav-item">
               <Link to={"/restaurants"} className="nav-link">
                 Restaurants
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/orders"} className="nav-link">
+                Orders
               </Link>
             </li>
             <li className="nav-item">
@@ -160,6 +168,9 @@ class App extends Component {
             <Route exact path={["/restaurants"]} component={RestaurantsList} />
             <Route exact path="/addrestaurant" component={AddRestaurant} />
             <Route path="/restaurants/:id" component={Restaurant} />
+            <Route exact path={["/orders"]} component={OrdersList} />
+            <Route exact path="/addorder" component={AddOrder} />
+            <Route path="/orders/:id" component={Order} />
 
             <Route exact path={["/tutorials"]} component={TutorialsList} />
             {/* <Route exact path="/add" component={AddTutorial} /> */}

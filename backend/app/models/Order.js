@@ -2,12 +2,6 @@ module.exports= (sequelize, DataTypes)=>{
 
     const Order = sequelize.define("Order", {
         
-        OrderID:{
-            type: DataTypes.INTEGER,
-            allownull: false,
-            autoIncrement: true,
-            primaryKey : true,
-        },
         CustomerID:{
             type: DataTypes.INTEGER.UNSIGNED,
             allownull : false,
