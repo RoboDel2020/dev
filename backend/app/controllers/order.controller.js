@@ -4,32 +4,32 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Restaurant
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.name) {
-      res.status(400).send({
-        message: "Content can not be empty!"
-      });
-      return;
-    }
-    if (!req.body.address) {
-      res.status(400).send({
-        message: "Content can not be empty!"
-      });
-      return;
-    }if (!req.body.city) {
-      res.status(400).send({
-        message: "Content can not be empty!"
-      });
-      return;
-    }
-    if (!req.body.country) {
-      res.status(400).send({
-        message: "Content can not be empty!"
-      });
-      return;
-    }
+    // if (!req.body.name) {
+    //   res.status(400).send({
+    //     message: "Content can not be empty!"
+    //   });
+    //   return;
+    // }
+    // if (!req.body.address) {
+    //   res.status(400).send({
+    //     message: "Content can not be empty!"
+    //   });
+    //   return;
+    // }if (!req.body.city) {
+    //   res.status(400).send({
+    //     message: "Content can not be empty!"
+    //   });
+    //   return;
+    // }
+    // if (!req.body.country) {
+    //   res.status(400).send({
+    //     message: "Content can not be empty!"
+    //   });
+      // return;
+    // }
     // Create a order
     const order = {
-      
+
       CustomerID: req.body.customerid,
       name: req.body.name,
       DeliveryID: req.body.deliveryid,

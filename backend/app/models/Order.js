@@ -24,13 +24,14 @@ module.exports= (sequelize, DataTypes)=>{
             allownull: false,
             
         },
-        Longitude:{
-            type: DataTypes.INTEGER,
-            allownull:true,
+        longitude:{
+            type: DataTypes.DECIMAL(10,6),
+            allownull: true,
+            
         },
-        Latitude:{
-            type: DataTypes.INTEGER,
-            allownull:true,
+        latitude:{
+            type: DataTypes.DECIMAL(10,6),
+            allownull: true,
         }
 
 
