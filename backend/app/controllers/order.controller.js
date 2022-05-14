@@ -27,16 +27,17 @@ exports.create = (req, res) => {
       });
       return;
     }
-    // Create a Restaurant
+    // Create a order
     const order = {
+      
       CustomerID: req.body.customerid,
-      RestaurantID: req.body.restaurantid,
+      name: req.body.name,
       DeliveryID: req.body.deliveryid,
       OrderDateTime: req.body.OrderDateTime,
       OrderStatus: req.body.OrderStatus,
       longitude: req.body.longitude,
       latitude: req.body.latitude,
-      active: req.body.active ? req.body.active : true
+      // active: req.body.active ? req.body.active : true
     };
     // Save Restaurant in the database
     Orders.create(order)
@@ -50,7 +51,7 @@ exports.create = (req, res) => {
         });
       });
   };
-// Retrieve all Restaurants from the database.
+// Retrieve all Orders from the database.
 exports.findAll = (req, res) => {
     const customerid = req.query.customerid;
     var condition = customerid ? { CustomerID: { [Op.like]: `%${customerid}%` } } : null;
@@ -67,8 +68,8 @@ exports.findAll = (req, res) => {
   };
 // Find a single Restaurant with an id
 exports.findOne = (req, res) => {
-    const id = req.params.orderid;
-    Restaurant.findByPk(id)
+    const id = req.params.id;
+    Orders.findByPk(id)
       .then(data => {
         if (data) {
           res.send(data);
@@ -86,8 +87,8 @@ exports.findOne = (req, res) => {
   };
 // Update a Restaurant by the id in the request
 exports.update = (req, res) => {
-    const id = req.params.orderid;
-    Restaurant.update(req.body, {
+    const id = req.params.id;
+    Orders.update(req.body, {
       where: { id: id }
     })
       .then(num => {
@@ -110,7 +111,7 @@ exports.update = (req, res) => {
 // Delete a Restaurant with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.orderid;
-    Restaurant.destroy({
+    Orders.destroy({
       where: { id: id }
     })
       .then(num => {
@@ -132,7 +133,7 @@ exports.delete = (req, res) => {
   };
 // Delete all Restaurants from the database.
 exports.deleteAll = (req, res) => {
-    Restaurant.destroy({
+    Orders.destroy({
       where: {},
       truncate: false
     })
@@ -147,15 +148,15 @@ exports.deleteAll = (req, res) => {
       });
   };
 // Find all active Restaurants
-exports.findAllActive = (req, res) => {
-    Orders.findAll({ where: { active: true } })
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving restaurants."
-        });
-      });
-  };
+// exports.findAllActive = (req, res) => {
+//     Orders.findAll({ where: { active: true } })
+//       .then(data => {
+//         res.send(data);
+//       })
+//       .catch(err => {
+//         res.status(500).send({
+//           message:
+//             err.message || "Some error occurred while retrieving restaurants."
+//         });
+//       });
+//   };

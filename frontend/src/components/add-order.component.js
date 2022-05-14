@@ -18,14 +18,14 @@ export default class AddOrder extends Component {
     this.newOrder = this.newOrder.bind(this);
     this.state = {
       id: null,
-      CustomerID: "",
+      CustomerID: null,
       name: "", 
-      DeliveryID: "",
-      OrderDateTime: "",
+      DeliveryID: null,
+      OrderDateTime: null,
       OrderStatus: "",
       longitude: "",
       latitude: "",
-      active: true,
+      // active: true,
       submitted: false,
       CustomerData : [],
       RestaurantData : []
@@ -94,7 +94,7 @@ export default class AddOrder extends Component {
   }
   saveOrder() {
     var data = {
-      name: this.state.name,
+      // name: this.state.name,
       CustomerID: this.state.CustomerID,
       name: this.state.name, 
       DeliveryID: this.state.DeliveryID,
@@ -114,7 +114,7 @@ export default class AddOrder extends Component {
           OrderStatus: response.data.OrderStatus,
           longitude: response.data.longitude,
           latitude: response.data.latitude,
-          active: response.data.active,
+          // active: response.data.active,
           submitted: true
         });
         console.log(response.data);
@@ -133,7 +133,7 @@ export default class AddOrder extends Component {
         OrderStatus: "",
         longitude: "",
         latitude: "",
-        active: true,
+        // active: true,
         submitted: false
     });
   }
@@ -153,7 +153,7 @@ export default class AddOrder extends Component {
               <label htmlFor="CustomerID">CustomerID</label>
               <select id="CustomerID" className="form-control " name="CustomerID" required value={this.state.CustomerData}  >  
                 {this.state.CustomerData.map((e, key) => {  
-                return <option key={key} value={e.CustomerID}>{e.Email}</option>;  
+                return <option key={key} value={e.CustomerID}>{e.CustomerID}</option>;  
                 })}  
               </select> 
             </div>
